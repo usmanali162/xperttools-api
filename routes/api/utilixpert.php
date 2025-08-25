@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UtiliXpert\UnitConverterController;
 use App\Http\Controllers\Api\UtiliXpert\QRGeneratorController;
 use App\Http\Controllers\Api\UtiliXpert\UUIDGeneratorController;
+use App\Http\Controllers\Api\UtiliXpert\RandomGeneratorController;
 
 // Unit Converter
 Route::controller(UnitConverterController::class)->group(function () {
@@ -21,4 +22,9 @@ Route::controller(QRGeneratorController::class)->group(function () {
 Route::controller(UUIDGeneratorController::class)->group(function () {
     Route::post('/uuid-generator', 'generate');
     Route::get('/uuid-generator/options', 'getSupportedOptions');
+});
+
+// Random Generator
+Route::controller(RandomGeneratorController::class)->group(function () {
+    Route::post('/random-generator', 'generate');
 });
