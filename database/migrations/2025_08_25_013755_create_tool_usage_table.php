@@ -12,8 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tool_usage', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->uuid('user_id')->nullable();
+            $table->string('tool_name', 50);
+            $table->string('category', 50);
+            $table->json('usage_data')->nullable();
+            $table->string('ip_address', 45)->nullable();
             $table->timestamps();
+            
+            $table->index(['user_id']);
+            $table->index(['tool_name']);
+            $table->index(['category']);
+            $table->index(['created_at']);
         });
     }
 

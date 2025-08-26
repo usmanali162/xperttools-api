@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\UtiliXpert\UnitConverterController;
 use App\Http\Controllers\Api\UtiliXpert\QRGeneratorController;
 use App\Http\Controllers\Api\UtiliXpert\UUIDGeneratorController;
 use App\Http\Controllers\Api\UtiliXpert\RandomGeneratorController;
+use App\Http\Controllers\Api\UtiliXpert\UrlShortenerController;
 
 // Unit Converter
 Route::controller(UnitConverterController::class)->group(function () {
@@ -27,4 +28,10 @@ Route::controller(UUIDGeneratorController::class)->group(function () {
 // Random Generator
 Route::controller(RandomGeneratorController::class)->group(function () {
     Route::post('/random-generator', 'generate');
+});
+
+// URL Shortener
+Route::controller(UrlShortenerController::class)->group(function () {
+    Route::post('/url-shortener', 'shorten');
+    Route::get('/url-shortener/{shortCode}/analytics', 'analytics');
 });
