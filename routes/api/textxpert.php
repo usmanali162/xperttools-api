@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TextXpert\TextAnalyzerController;
 use App\Http\Controllers\Api\TextXpert\CaseConverterController;
 use App\Http\Controllers\Api\TextXpert\LoremIpsumController;
+use App\Http\Controllers\Api\TextXpert\TextDifferenceController;
 
 // Text Analyzer (Word/Character Counter)
 Route::controller(TextAnalyzerController::class)->group(function () {
@@ -20,4 +21,10 @@ Route::controller(CaseConverterController::class)->group(function () {
 Route::controller(LoremIpsumController::class)->group(function () {
     Route::post('/lorem-generator', 'generate');
     Route::get('/lorem-generator/options', 'getOptions');
+});
+
+// Text Difference Checker
+Route::controller(TextDifferenceController::class)->group(function () {
+    Route::post('/text-difference', 'compare');
+    Route::get('/text-difference/options', 'getOptions');
 });
