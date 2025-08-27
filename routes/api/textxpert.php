@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\TextXpert\TextAnalyzerController;
 use App\Http\Controllers\Api\TextXpert\CaseConverterController;
 use App\Http\Controllers\Api\TextXpert\LoremIpsumController;
 use App\Http\Controllers\Api\TextXpert\TextDifferenceController;
+use App\Http\Controllers\Api\TextXpert\DuplicateRemoverController;
 
 // Text Analyzer (Word/Character Counter)
 Route::controller(TextAnalyzerController::class)->group(function () {
@@ -27,4 +28,10 @@ Route::controller(LoremIpsumController::class)->group(function () {
 Route::controller(TextDifferenceController::class)->group(function () {
     Route::post('/text-difference', 'compare');
     Route::get('/text-difference/options', 'getOptions');
+});
+
+// Duplicate Line Remover
+Route::controller(DuplicateRemoverController::class)->group(function () {
+    Route::post('/duplicate-remover', 'remove');
+    Route::get('/duplicate-remover/options', 'getOptions');
 });
